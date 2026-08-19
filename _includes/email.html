@@ -1,0 +1,13 @@
+{%- comment -%}
+Renders an email link whose address never appears in the page source as a
+complete string. The user and domain are held in separate data attributes and
+joined by JS at render time (see the script in _layouts/default.html), which
+defeats the naive regex scrapers that harvest mailto: links.
+
+This is obfuscation, not protection — a scraper that executes JavaScript will
+still find it. It cuts the bulk, low-effort harvesting, nothing more.
+
+Without JS the link still works via the <noscript> fallback below, which shows
+the address in [at]/[dot] form for a human to retype.
+{%- endcomment -%}
+<a class="email" data-u="{{ site.email_user }}" data-d="{{ site.email_domain }}" href="#">{{ include.label | default: "Email" }}</a><noscript> ({{ site.email_user }} [at] {{ site.email_domain | replace: ".", " [dot] " }})</noscript>

@@ -1,3 +1,6 @@
+# Source material that must never be published (CV PDF, drafts, etc.)
+_private_assets/
+
 # Jekyll build output / local preview artifacts
 _site/
 .jekyll-cache/
@@ -6,5 +9,8 @@ _site/
 # Project-local gem install (bundle config set --local path vendor/bundle)
 vendor/
 .bundle/
+
+# Python venv used only for one-off local tooling
+.venv/
 
 .DS_Store

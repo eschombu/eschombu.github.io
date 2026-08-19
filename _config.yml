@@ -10,13 +10,16 @@ baseurl: ""
 # public; add new ones and they'll show up automatically.
 profiles:
   github: eschombu
-  # linkedin: your-linkedin-handle
-  # scholar: your-google-scholar-id
-  # orcid: 0000-0000-0000-0000
+  scholar: LRRVdOIAAAAJ
+  # Uncomment to link LinkedIn. Left off for now because that profile names the
+  # employers this site deliberately leaves generic.
+  # linkedin: eschomburg
 
-# Shown as a mailto: link on the landing page. Delete this line to remove it
-# entirely (see README for the spam trade-off).
-email: eschomburg@gmail.com
+# Email is split into two halves and rejoined by JavaScript at render time, so
+# the full address never appears in the served HTML. See _includes/email.html.
+# Delete both lines to remove the email link entirely.
+email_user: eschomburg
+email_domain: gmail.com
 
 markdown: kramdown
 kramdown:
@@ -28,3 +31,5 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+  - .venv
+  - _private_assets

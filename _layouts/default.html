@@ -51,5 +51,13 @@
     </ul>
     <p class="copyright">© {{ 'now' | date: "%Y" }} {{ site.title }}</p>
   </footer>
+
+  <script>
+    // Assemble mailto: links whose address is split across data attributes,
+    // so the complete address is never present in the served HTML.
+    document.querySelectorAll('a.email[data-u][data-d]').forEach(function (a) {
+      a.href = 'mailto:' + a.dataset.u + String.fromCharCode(64) + a.dataset.d;
+    });
+  </script>
 </body>
 </html>
