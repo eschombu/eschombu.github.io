@@ -1,0 +1,221 @@
+/* ---------------------------------------------------------------------------
+   Design tokens. Light theme by default, dark via prefers-color-scheme.
+   --------------------------------------------------------------------------- */
+:root {
+  --bg:        #fdfdfc;
+  --fg:        #1c1b19;
+  --fg-muted:  #6b6862;
+  --fg-subtle: #918d85;
+  --rule:      #e4e1db;
+  --accent:    #8a5a2b;
+  --accent-bg: #f4efe7;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --measure: 34rem;   /* comfortable reading width */
+  --page:    46rem;   /* overall page width */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #16151a;
+    --fg:        #e8e6e1;
+    --fg-muted:  #a09c95;
+    --fg-subtle: #7a766f;
+    --rule:      #2e2c33;
+    --accent:    #d9a066;
+    --accent-bg: #23212a;
+  }
+}
+
+/* The viewer's theme toggle stamps data-theme on :root; it must win both ways. */
+:root[data-theme="light"] {
+  --bg: #fdfdfc; --fg: #1c1b19; --fg-muted: #6b6862; --fg-subtle: #918d85;
+  --rule: #e4e1db; --accent: #8a5a2b; --accent-bg: #f4efe7;
+}
+:root[data-theme="dark"] {
+  --bg: #16151a; --fg: #e8e6e1; --fg-muted: #a09c95; --fg-subtle: #7a766f;
+  --rule: #2e2c33; --accent: #d9a066; --accent-bg: #23212a;
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0 1.5rem;
+}
+
+body > * {
+  width: 100%;
+  max-width: var(--page);
+  margin-inline: auto;
+}
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.skip-link {
+  position: absolute; left: -9999px;
+  background: var(--bg); color: var(--fg);
+  padding: 0.5rem 0.85rem; border: 1px solid var(--rule); border-radius: 4px;
+}
+.skip-link:focus { left: 1rem; top: 1rem; z-index: 10; }
+
+/* ---------------------------------------------------------------------------
+   Header / nav
+   --------------------------------------------------------------------------- */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding: 2.5rem 0 1.25rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  text-decoration: none;
+}
+.site-title:hover { color: var(--accent); }
+
+.site-nav { display: flex; gap: 1.25rem; }
+.site-nav a {
+  color: var(--fg-muted);
+  text-decoration: none;
+  font-size: 0.9375rem;
+}
+.site-nav a:hover { color: var(--accent); }
+.site-nav a[aria-current="page"] { color: var(--fg); font-weight: 500; }
+
+/* ---------------------------------------------------------------------------
+   Main
+   --------------------------------------------------------------------------- */
+main { flex: 1; padding: 3rem 0 4rem; }
+
+h1, h2, h3 { line-height: 1.25; letter-spacing: -0.015em; font-weight: 600; }
+
+h1 {
+  font-size: clamp(1.85rem, 1.4rem + 1.8vw, 2.5rem);
+  margin: 0 0 0.4em;
+}
+
+h2 {
+  font-size: 1.0625rem;
+  margin: 3rem 0 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  color: var(--fg-muted);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+h3 { font-size: 1.0625rem; margin: 1.75rem 0 0.25rem; }
+
+p, ul, ol { max-width: var(--measure); }
+p { margin: 0 0 1.15em; }
+
+.lead {
+  font-size: 1.1875rem;
+  color: var(--fg-muted);
+  margin-bottom: 1.75em;
+}
+
+hr { border: 0; border-top: 1px solid var(--rule); margin: 3rem 0; }
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--accent-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 3px;
+}
+
+img { max-width: 100%; height: auto; }
+
+/* Wide content must scroll in its own container, never the page body. */
+table { display: block; overflow-x: auto; max-width: 100%; border-collapse: collapse; }
+
+/* ---------------------------------------------------------------------------
+   CV entries
+   --------------------------------------------------------------------------- */
+.entry {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 0 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.entry .when {
+  color: var(--fg-subtle);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.35rem;
+}
+
+.entry .what { min-width: 0; }
+.entry h3 { margin-top: 0; }
+
+.entry .where {
+  color: var(--fg-muted);
+  font-size: 0.9375rem;
+  margin: 0 0 0.5rem;
+}
+
+.entry p:last-child, .entry ul:last-child { margin-bottom: 0; }
+.entry ul { padding-left: 1.1rem; margin: 0.5rem 0 0; }
+.entry li { margin-bottom: 0.3rem; }
+
+@media (max-width: 34rem) {
+  .entry { grid-template-columns: 1fr; gap: 0; }
+  .entry .when { padding-top: 0; margin-bottom: 0.15rem; }
+}
+
+/* Inline tag list, e.g. skills */
+.tags { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; max-width: none; }
+.tags li {
+  background: var(--accent-bg);
+  color: var(--fg-muted);
+  font-size: 0.8125rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+/* ---------------------------------------------------------------------------
+   Footer
+   --------------------------------------------------------------------------- */
+.site-footer {
+  padding: 1.5rem 0 2.5rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+}
+
+.profile-links { list-style: none; display: flex; gap: 1.25rem; margin: 0; padding: 0; }
+.copyright { color: var(--fg-subtle); margin: 0; }

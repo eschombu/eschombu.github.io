@@ -1,0 +1,10 @@
+# Jekyll build output / local preview artifacts
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Project-local gem install (bundle config set --local path vendor/bundle)
+vendor/
+.bundle/
+
+.DS_Store

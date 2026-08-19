@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% if page.title and page.title != site.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }} · {{ site.tagline }}{% endif %}</title>
+  <meta name="description" content="{{ page.description | default: site.description | strip_newlines | strip }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:description" content="{{ page.description | default: site.description | strip_newlines | strip }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    <nav class="site-nav" aria-label="Main">
+      {%- assign pages = site.pages | where_exp: "p", "p.nav_order" | sort: "nav_order" -%}
+      {%- for p in pages %}
+      <a href="{{ p.url | relative_url }}"{% if p.url == page.url %} aria-current="page"{% endif %}>{{ p.nav_title | default: p.title }}</a>
+      {%- endfor %}
+    </nav>
+  </header>
+
+  <main id="main">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <ul class="profile-links">
+      {%- if site.profiles.github %}
+      <li><a href="https://github.com/{{ site.profiles.github }}" rel="me">GitHub</a></li>
+      {%- endif %}
+      {%- if site.profiles.linkedin %}
+      <li><a href="https://www.linkedin.com/in/{{ site.profiles.linkedin }}" rel="me">LinkedIn</a></li>
+      {%- endif %}
+      {%- if site.profiles.scholar %}
+      <li><a href="https://scholar.google.com/citations?user={{ site.profiles.scholar }}" rel="me">Google Scholar</a></li>
+      {%- endif %}
+      {%- if site.profiles.orcid %}
+      <li><a href="https://orcid.org/{{ site.profiles.orcid }}" rel="me">ORCID</a></li>
+      {%- endif %}
+    </ul>
+    <p class="copyright">© {{ 'now' | date: "%Y" }} {{ site.title }}</p>
+  </footer>
+</body>
+</html>

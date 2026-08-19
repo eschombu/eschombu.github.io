@@ -1,0 +1,30 @@
+title: Erik Schomburg
+tagline: Data scientist & software engineer
+description: >-
+  Erik Schomburg — data scientist and software engineer.
+
+url: "https://erikschomburg.com"
+baseurl: ""
+
+# Links rendered in the header/footer. Comment out or delete any you don't want
+# public; add new ones and they'll show up automatically.
+profiles:
+  github: eschombu
+  # linkedin: your-linkedin-handle
+  # scholar: your-google-scholar-id
+  # orcid: 0000-0000-0000-0000
+
+# Shown as a mailto: link on the landing page. Delete this line to remove it
+# entirely (see README for the spam trade-off).
+email: eschomburg@gmail.com
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
