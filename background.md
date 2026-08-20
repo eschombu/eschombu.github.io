@@ -14,8 +14,10 @@ description: Erik Schomburg — professional background in machine learning, dat
 <div class="entry">
   <div class="when">2023 — Present</div>
   <div class="what">
-    <h3>Research Scientist, Software</h3>
-    <p class="where">Nonprofit research institute · New York</p>
+    <h3>Research Scientist &amp; Software Engineer</h3>
+    <p class="where">Connectomics ·
+      <a href="https://www.simonsfoundation.org/flatiron/center-for-computational-neuroscience/">Flatiron Institute Center for Computational Neuroscience</a>
+      · New York</p>
     <p>Machine learning for automated reconstruction of neural circuitry from
     volumetric electron microscopy.</p>
   </div>

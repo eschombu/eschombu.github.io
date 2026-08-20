@@ -159,6 +159,36 @@ img { max-width: 100%; height: auto; }
 table { display: block; overflow-x: auto; max-width: 100%; border-collapse: collapse; }
 
 /* ---------------------------------------------------------------------------
+   Intro block: headshot beside the name
+   --------------------------------------------------------------------------- */
+.intro {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.intro-text { min-width: 0; }
+.intro h1 { margin-bottom: 0.15em; }
+.intro .lead { margin-bottom: 0; }
+
+.headshot {
+  flex: none;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* Ring reads as a deliberate edge in both themes without a hard border. */
+  box-shadow: 0 0 0 1px var(--rule);
+}
+
+/* Stack on narrow screens so the name gets full width. */
+@media (max-width: 30rem) {
+  .intro { flex-direction: column; align-items: flex-start; gap: 1.15rem; }
+  .headshot { width: 96px; height: 96px; }
+}
+
+/* ---------------------------------------------------------------------------
    CV entries
    --------------------------------------------------------------------------- */
 .entry {

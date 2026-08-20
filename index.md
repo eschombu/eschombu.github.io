@@ -5,9 +5,14 @@ nav_order: 1
 nav_title: About
 ---
 
-# Erik Schomburg
-
-<p class="lead">Data scientist and software engineer in New York.</p>
+<div class="intro">
+  <img class="headshot" src="{{ '/assets/img/erik-schomburg.jpg' | relative_url }}"
+       alt="Erik Schomburg" width="256" height="256" loading="eager" decoding="async">
+  <div class="intro-text">
+    <h1>Erik Schomburg</h1>
+    <p class="lead">Data scientist and software engineer in New York.</p>
+  </div>
+</div>
 
 I build machine learning systems — training and inference pipelines, model
 services, and the analysis tooling that surrounds them. My background is in
@@ -15,11 +20,12 @@ physics and neuroscience, and most of my work sits where careful analysis of
 messy, high-dimensional data meets the engineering required to run it in
 production.
 
-I'm currently a research scientist at a nonprofit research institute, working on
-machine learning for large-scale connectomics: reconstructing the wiring of a
-brain from electron microscope imagery. Before that I spent several years
-building machine learning systems in industry, on problems spanning
-personalization, sensor and signal interpretation, and location inference.
+I'm currently a Research Scientist and Software Engineer on the Connectomics
+project at the [Flatiron Institute Center for Computational Neuroscience](https://www.simonsfoundation.org/flatiron/center-for-computational-neuroscience/),
+where we reconstruct the wiring of a brain from electron microscope imagery.
+Before that I spent several years building machine learning systems in industry,
+on problems spanning personalization, sensor and signal interpretation, and
+location inference.
 
 I did my Ph.D. in physics at Caltech, studying the biophysical origins of
 electrical signals recorded in the brain, and continued that work as a
